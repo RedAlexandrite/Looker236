@@ -74,13 +74,7 @@ view: users {
     sql: ${TABLE}.first_name ;;
     link: {
       label: "To a Look"
-      url: "https://gcpl236.cloud.looker.com/looks/103?
-      users.country_state={{users.country_state._value}}&
-      users.first_name={{value}}&
-      users.last_name={{users.last_name._value}}&
-      f[users.country_state]={{ _filters['users.country_state'] | url_encode }}&
-      f[users.first_name]={{ _filters['users.first_name'] | url_encode }}&
-      f[users.last_name]={{ _filters['users.last_name'] | url_encode }}"
+      url: "https://gcpl236.cloud.looker.com/looks/103?f[users.country_state]={{users.country_state._value}}&f[users.first_name]={{value}}&f[users.last_name]={{users.last_name._value}}"
     }
   }
 
