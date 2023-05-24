@@ -72,6 +72,13 @@ view: users {
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
+    link: {
+      label: "To a Look"
+      url: "https://gcpl236.cloud.looker.com/looks/103?
+      f[users.country_state]={{users.country_state._value}}&
+      f[users.first_name]={{value}}&
+      f[users.last_name]={{users.last_name._value}}"
+    }
   }
 
   dimension: gender {
