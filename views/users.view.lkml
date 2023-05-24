@@ -94,6 +94,11 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  dimension: country_state {
+    type: string
+    sql: CONCAT(${country}, " & ",${state}) ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
