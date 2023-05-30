@@ -126,7 +126,7 @@ explore: orders {
 explore: order_items {
   join: orders {
     type: left_outer
-    sql_on: ${order_items.order_id} = ${orders.id};;
+    sql_on: ${order_items.order_id} = ${orders.id} and ${order_items.test} > 0;;
     relationship: many_to_one
   }
 
