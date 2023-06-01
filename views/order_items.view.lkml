@@ -51,7 +51,12 @@ view: order_items {
       week,
       month,
       quarter,
-      year
+      year,
+      time_of_day,
+      hour,
+      hour_of_day,
+      minute,
+      second
     ]
     sql: ${TABLE}.returned_at ;;
   }
