@@ -50,6 +50,14 @@ view: orders {
     drill_fields: [detail*]
   }
 
+  measure: cound_distinct_test {
+    type: number
+    sql: COUNT( DISTINCT CASE
+    WHEN ${created_date} = null OR ${user_id} > 100 THEN ${user_id}
+    ELSE null
+    END) ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

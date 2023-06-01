@@ -51,12 +51,7 @@ view: products {
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
-  # Click on the type parameter to see all the options in the Quick Help panel on the right.
-
-  measure: cound_distinct_test {
-    type: number
-    sql: if(${created_date} = null OR ${retail_price} > 500, COUNT(${category}),0) ;;
-  }
+  # Click on the type parameter to see all the options in the Quick Help panel on the right
 
   measure: total_retail_price {
     type: sum
