@@ -1,5 +1,7 @@
+include: "/views/orders.view.lkml"
 # The name of this view in Looker is "Products"
 view: products {
+  extends: [orders]
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
   sql_table_name: demo_db.products ;;
@@ -51,6 +53,11 @@ view: products {
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
+  measure: cound_distinct_test {
+    type: number
+    sql: if(${created_date} = null OR ${retail_price} > 500, COUNT(${category}),0) ;;
+  }
+
   measure: total_retail_price {
     type: sum
     sql: ${retail_price} ;;
@@ -59,6 +66,11 @@ view: products {
   measure: average_retail_price {
     type: average
     sql: ${retail_price} ;;
+  }
+
+  measure: running_totals {
+    type: number
+    sql: if(${category} = ${category}, SUM(${retail_price}), ${retail_price}) ;;
   }
 
   dimension: sku {
