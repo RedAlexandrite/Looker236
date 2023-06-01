@@ -1,5 +1,7 @@
+include: "/views/products.view.lkml"
 # The name of this view in Looker is "Order Items"
 view: order_items {
+  extends: [products]
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
   sql_table_name: demo_db.order_items ;;
@@ -69,6 +71,22 @@ view: order_items {
   dimension: test {
     type: number
     sql: (COALESCE(SUM(${sale_price}), 0)) > 0 ;;
+  }
+
+  parameter: allowed_values {
+    type: unquoted
+    allowed_value: {
+      label: "Outreach"
+      value: "A"
+    }
+    allowed_value: {
+      label: "Hospital"
+      value: "B"
+    }
+  }
+
+  filter: filter {
+    sql: if(${allowed_values}="A", SELECT phone FROM order_items WHERE phone = "") ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
