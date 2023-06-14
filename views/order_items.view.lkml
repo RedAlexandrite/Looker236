@@ -26,6 +26,7 @@ view: order_items {
   }
 
   dimension: order_id {
+    description: "This is a test for the description field"
     type: number
     # hidden: yes
     sql: ${TABLE}.order_id ;;
