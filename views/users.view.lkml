@@ -108,6 +108,19 @@ view: users {
     drill_fields: [detail*]
   }
 
+  measure: list_last_names {
+    type: list
+    list_field: last_name
+    #sql: ${last_name} ;;
+    html:
+    {% if value == 'Baker' %}
+    <span style="color: black; background-color: #f56767; font-size:100%; text-align:center">{{ rendered_value }}</span>
+    {% else %}
+    <span style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</span>
+    {% endif %}
+    ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
